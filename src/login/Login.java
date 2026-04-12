@@ -151,11 +151,11 @@ public class Login
 	}
 
 	
-	////METHOD THAT CHECKS IF THE REGISTRATION DETAILS MATCH THE LOGIN DETAILS
+	
     /// @param inputUsername
     /// @param inputPassword
     /// @return  
-
+        //METHOD THAT CHECKS IF THE REGISTRATION DETAILS MATCH THE LOGIN DETAILS
 	public static boolean loginUser(String inputUsername, String inputPassword)
 	{
 		return inputUsername.equals(userName) && inputPassword.equals(password);
