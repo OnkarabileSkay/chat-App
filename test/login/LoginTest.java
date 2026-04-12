@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class LoginTest {
 
-    // ================= USERNAME TESTS =================
+    // USERNAME TESTS
     @Test
     public void testCheckUsername_valid() {
         assertTrue(Login.checkUsername("user"));
@@ -13,7 +13,7 @@ public class LoginTest {
 
     
 
-    // ================= PASSWORD TESTS =================
+    // PASSWORD TESTS 
     @Test
     public void testCheckPasswordComplexity_valid() {
         assertTrue(Login.checkPasswordComplexity("Pass123@"));
@@ -21,7 +21,7 @@ public class LoginTest {
 
     
 
-    // ================= CELL NUMBER TESTS =================
+    // CELL PHONE NUMBER TESTS
     @Test
     public void testCheckCellNumber_valid() {
         assertTrue(Login.checkCellNumber("+27821234567"));
@@ -29,7 +29,7 @@ public class LoginTest {
 
     
 
-    // ================= LOGIN TESTS =================
+    // LOGIN TESTS 
     @Test
     public void testLoginUser_success() {
         // Set stored values first
@@ -41,7 +41,7 @@ public class LoginTest {
 
  
 
-    // ================= LOGIN STATUS TEST =================
+    //LOGIN STATUS TEST
     @Test
     public void testReturnLoginStatus_success() {
         String result = Login.returnLoginStatus(true);
