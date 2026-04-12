@@ -5,15 +5,15 @@ import static org.junit.Assert.*;
 
 public class LoginTest {
 
-    // USERNAME TESTS
+    // USERNAME TEST
     @Test
     public void testCheckUsername_valid() {
-        assertTrue(Login.checkUsername("user"));
+        assertTrue(Login.checkUsername("user_"));
     }
 
     
 
-    // PASSWORD TESTS 
+    // PASSWORD TEST
     @Test
     public void testCheckPasswordComplexity_valid() {
         assertTrue(Login.checkPasswordComplexity("Pass123@"));
@@ -21,7 +21,7 @@ public class LoginTest {
 
     
 
-    // CELL PHONE NUMBER TESTS
+    // CELL PHONE NUMBER TEST
     @Test
     public void testCheckCellNumber_valid() {
         assertTrue(Login.checkCellNumber("+27821234567"));
@@ -29,7 +29,7 @@ public class LoginTest {
 
     
 
-    // LOGIN TESTS 
+    // LOGIN TEST
     @Test
     public void testLoginUser_success() {
         // Set stored values first
@@ -41,7 +41,7 @@ public class LoginTest {
 
  
 
-    //LOGIN STATUS TEST
+    //LOGIN STATUS TES
     @Test
     public void testReturnLoginStatus_success() {
         String result = Login.returnLoginStatus(true);
