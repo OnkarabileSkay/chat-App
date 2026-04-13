@@ -38,7 +38,7 @@ public class Login
 
 			if (loginSuccess)
 			{
-				System.out.println("Welcome back " + firstName + "," + lastName + ", it is great to see you again.");
+				System.out.println("Welcome back " + firstName + "," + lastName + " it is great to see you again.");
 			}
 			else
 			{
