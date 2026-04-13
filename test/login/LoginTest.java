@@ -46,7 +46,7 @@ public class LoginTest
 
  
 
-    //LOGIN STATUS TES
+    //LOGIN STATUS TEST
     @Test
     public void testReturnLoginStatus_success() 
     {
