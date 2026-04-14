@@ -51,7 +51,7 @@ public class Login
 	public static void registerUser(Scanner scanner)
 	{
 
-		//METHOD THAT CHECKS IF THE USER ENTERD THE REQUIRED USERNAME
+		//METHOD REGISTERS THE USER
 		while (true)
 		{
 			System.out.print("Enter username: ");
