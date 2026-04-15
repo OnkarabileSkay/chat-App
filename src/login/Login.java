@@ -24,7 +24,7 @@ public class Login
 		while (!loginSuccess)
 		{
 			System.out.println("\n");
-			System.out.println("----- LOGIN -----");
+			System.out.println("WELCOME TO CHAT APP, PLEASE LOGIN");
 
 			System.out.print("Enter username: ");
 			String inputUserName = scanner.nextLine();
