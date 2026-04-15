@@ -108,9 +108,9 @@ public class Login
 
 	
         //METHOD THAT CHECKS IF THE USER ENTERED THE REQUIRED USERNAME
-	public static boolean checkUsername(String usernameInput)
+	public static boolean checkUsername(String storedUsername)
 	{
-		return usernameInput.length() <= 5 && usernameInput.contains("_");
+		return storedUsername.length() <= 5 && storedUsername.contains("_");
 	}
 	//METHOD THAT CHECKS IF THE USER ENTERED THE REQUIRED PASSWORD
 	public static boolean checkPasswordComplexity(String userPassword)
@@ -152,19 +152,19 @@ public class Login
 
 	
 	
-    /// @param inputUsername
-    /// @param inputPassword
+    /// @param storedUsername
+    /// @param storedPassword
     /// @return  
         //METHOD THAT CHECKS IF THE REGISTRATION DETAILS MATCH THE LOGIN DETAILS
-	public static boolean loginUser(String inputUsername, String inputPassword)
+	public static boolean loginUser(String storedUsername, String storedPassword)
 	{
-		return inputUsername.equals(userName) && inputPassword.equals(password);
+		return storedUsername.equals(userName) && storedPassword.equals(password);
 	}
 	//METHOD THAT DISPLAYS THE FINAL RESULTS OF LOGIN
 
-	public static String returnLoginStatus(boolean success)
+	public static String returnLoginStatus(boolean logdin)
 	{
-		if (success )
+		if (logdin )
 		{
 			return "A successful login";
 		}
