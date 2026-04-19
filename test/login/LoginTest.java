@@ -10,7 +10,7 @@ public class LoginTest
     @Test
     public void testCheckUsername_valid() 
     {
-        assertTrue(Login.checkUsername("user_"));
+        assertTrue(Login.checkUsername("Kyle_"));
     }
 
     
@@ -19,7 +19,7 @@ public class LoginTest
     @Test
     public void testCheckPasswordComplexity_valid() 
     {
-        assertTrue(Login.checkPasswordComplexity("Pass123@"));
+        assertTrue(Login.checkPasswordComplexity("Che&&sec@ke99!"));
     }
 
     
