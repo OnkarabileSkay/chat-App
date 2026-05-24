@@ -1,0 +1,5 @@
+Message ID: 956466089
+Message Hash: 95:1:ITEXT
+Recipient: +123456789
+Message: I want to store this text
+
