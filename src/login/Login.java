@@ -112,7 +112,7 @@ public class Login
             }
             else
             {
-                System.out.println("Invalid option. Please choose 1, 2, or 3.");
+                System.out.println("Incorrect option. Please choose between 1, 2, and 3.");
             }
         }
     }
