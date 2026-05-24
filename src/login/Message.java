@@ -11,11 +11,11 @@ import java.util.Random;
 public class Message {
     
     // Decleration of Variables
-    String messageID;
-    int messageCounter;
-    String recipient;
-    String textMessage;
-    String signHash;
+    public String messageID;
+    public int messageCounter;
+    public String recipient;
+    public String textMessage;
+    public String signHash;
     
     static int sentMessage = 0;
     static String[] savedMessages = new String[50];
@@ -67,7 +67,7 @@ public class Message {
     
     // Method that displays the users choice to choose from
     public String sendMessage() {
-        java.util.Scanner keyboard = new java.util.Scanner(System.in);
+        java.util.Scanner input = new java.util.Scanner(System.in);
         
         System.out.println("\nWhat do you want to do with this message?");
         System.out.println("Enter 1 to SEND it");
@@ -75,7 +75,7 @@ public class Message {
         System.out.println("Enter 0 to DELETE it");
         System.out.print("Your choice: ");
         
-        int choice = keyboard.nextInt();
+        int choice = input.nextInt();
         
         if (choice == 1) {
             sentMessage = sentMessage + 1;
@@ -136,11 +136,26 @@ public class Message {
     }
     
     // 
-    public static boolean cellNumber2check(String cellNumber) {
-        if (cellNumber.startsWith("+") && cellNumber.length() <= 10) {
+    public static boolean cellNumber2check(String cellNumber) 
+    {
+        if (cellNumber.startsWith("+") && cellNumber.length() <= 10) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
+    }
+      // total of message calling
+    public int getMessageCount() 
+    {
+        return messageCounter;
+    }
+
+     // message id calling
+    public String getMessageID() 
+    {
+       return messageID;
     }
 }
