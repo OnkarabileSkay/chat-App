@@ -44,13 +44,13 @@ public class Login
             if (loginSuccess == true)
             {
                 System.out.println("Welcome back " + firstName + " " + lastName + ", it is great to see you again.");
-                // After login, start the messaging app
+                // After login, start the messaging method
                 messagingMethod(scanner);
             }
         }
     }
     
-    // NEW METHOD: This runs the messaging app after login
+ 
     public static void messagingMethod(Scanner scanner)
     {
         System.out.println("\n");
@@ -62,9 +62,6 @@ public class Login
         System.out.print("How many messages would you like to send?: ");
         int maxMessages = scanner.nextInt();
         System.out.print("You will send: " + maxMessages + " Messages Only. ");
-        
-        
-        
         int messageSent = 0;
         boolean loopControl = true;
         
@@ -81,7 +78,7 @@ public class Login
             int Userchoice = scanner.nextInt();
             
             
-            // Using simple if statements to display what the user choosed
+            //if statements to display what the user choosed
             if (Userchoice == 1)
             {
                 if (messageSent < maxMessages)
@@ -95,7 +92,7 @@ public class Login
                         System.out.println("\n");
                         System.out.println("You have completed all " + maxMessages + " messages!");
                         System.out.println("Total messages sent: " + Message.returnTotalMessages());
-                        System.out.println("=================================");
+                        System.out.println("");
                     }
                 }
                 else
@@ -110,7 +107,7 @@ public class Login
             else if (Userchoice == 3)
             {
                 System.out.println("Thank you for using QuickChat. Goodbye!");
-                loopControl = false; // This exits the loop
+                loopControl = false; 
             }
             else
             {
@@ -119,10 +116,10 @@ public class Login
         }
     }
     
-    // NEW METHOD: This sends one message
+    // Each message send
     public static void sendMessage(Scanner scanner, int messageNumber)
     {
-        System.out.println("\n--- Sending Message Number " + messageNumber + " ---");
+        System.out.println("\n Sending Message Number " + messageNumber + ".");
         scanner.nextLine();
         // Get recipient cell number
         String recipient = "";
@@ -130,12 +127,12 @@ public class Login
         
         while (correctRecipientNumber == false)
         {
-            System.out.print("Enter recipient's cell number (must start with + and be max 10 characters): ");
+            System.out.print("Enter recipient's cell number: ");
              recipient  = scanner.nextLine();
             
             if (Message.checkRecipientCell(recipient).equals("correctFormate"))
             {
-                System.out.println("Cell number accepted!");
+                System.out.println("Cell number succesfully captured!");
                 correctRecipientNumber = true;
             }
             else
@@ -144,7 +141,7 @@ public class Login
             }
         }
         
-        // Get message text
+        // User enters the message text
         String messageText = "";
         boolean validMessage = false;
         
@@ -165,24 +162,23 @@ public class Login
             }
         }
         
-        // Create the message object
+        // Create the actual message object
         Message newMessage = new Message(messageNumber, recipient, messageText);
         
-        // Show message preview
-        System.out.println("\n=== Message Preview ===");
+        // Show message details
+        System.out.println("\n Message Details View");
         System.out.println(newMessage.getMessageDetails());
-        System.out.println("======================\n");
+        System.out.println("\n");
         
         // Ask what to do with the message
         String result = newMessage.sendMessage();
         System.out.println(result);
-        
-        // If message was sent, show it again
+    
     if (result.equals("Message sent successfully!")) 
     {
-    System.out.println("\n=== SENT MESSAGE ===");
+    System.out.println("\nSENT MESSAGE");
     System.out.println(newMessage.getMessageDetails());
-    System.out.println("===================");
+    System.out.println("\n");
    }
     }
 
