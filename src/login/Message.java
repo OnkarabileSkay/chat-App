@@ -6,6 +6,10 @@ public class Message {
     // Using a fixed array of 100 instead of an ArrayList
     private static String[] storedMessages = new String[100]; 
 
+    static Object checkRecipientCell(String recipient) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     // Instance variables
     private String messageId;
     private String recipient;
@@ -13,7 +17,7 @@ public class Message {
     private String messageHash;
 
     // Constructor to initialize the object
-    public Message(String recipient, String messageText) {
+    public Message(int messageNumber, String recipient, String messageText) {
         this.messageId = generateMessageId();
         this.recipient = recipient;
         this.messageText = messageText;
@@ -113,5 +117,9 @@ public class Message {
         // Generating a random number between 0 and 9999
         int randomNumber = (int)(Math.random() * 10000);
         return "MSG" + randomNumber;
+    }
+
+    boolean getMessageDetails() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
