@@ -5,26 +5,26 @@ import static org.junit.Assert.*;
 
 public class MessageTest 
 {
-    // TEST 1: checkMessageID() - Tests if message ID is not more than 10 characters
+    //Tests if message ID is not more than 10 characters
     @Test
     public void testCheckMessageID() 
     {
-        Message msg = new Message(1, "+27731234567", "Hello world");
+        Message msg = new Message(1, "1234567", "User;s message");
         assertTrue(msg.checkMessageID());
     }
     
-    // TEST 2: checkRecipientCell() - Tests if cell number starts with +
+    //Tests if the recipient cell number starts with + and lass tha 13
     @Test
     public void testCheckRecipientCell() 
     {
         assertEquals("correctFormate", Message.checkRecipientCell("+27731234567"));
     }
     
-    // TEST 3: createMessageHash() - Tests if hash is created
+    // Tests if hash is created
     @Test
     public void testCreateMessageHash() 
     {
-        Message msg = new Message(1, "+27731234567", "Hello world");
+        Message msg = new Message(1, "+1234", "This has to be 100%");
         String hash = msg.createMessageHash();
         assertNotNull(hash);
     }
@@ -45,11 +45,11 @@ public class MessageTest
         assertNotNull(result);
     }
     
-    // TEST 6: getMessageDetails() - Tests if message details are returned
+    //Tests if message details are returned
     @Test
     public void testGetMessageDetails() 
     {
-        Message msg = new Message(1, "+27731234567", "Hello friend");
+        Message msg = new Message(1, "+27731234567", "Hi Sir");
         String details = msg.getMessageDetails();
         assertNotNull(details);
     }
