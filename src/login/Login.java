@@ -120,7 +120,7 @@ public class Login
     // This sends one message
     public static void sendMessage(Scanner scanner, int messageNumber)
     {
-        System.out.println("\n--- Sending Message Number " + messageNumber + " ---");
+        System.out.println("\n Sending Message Number " + messageNumber + " .");
         scanner.nextLine();
         // Get recipient cell number
         String recipient = "";
