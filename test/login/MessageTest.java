@@ -13,7 +13,7 @@ public class MessageTest
         assertTrue(msg.checkMessageID());
     }
     
-    //Tests if the recipient cell number starts with + and lass tha 13
+    //Tests if the recipient cell number starts with + and lass than 13 int
     @Test
     public void testCheckRecipientCell() 
     {
@@ -29,7 +29,7 @@ public class MessageTest
         assertNotNull(hash);
     }
     
-    // TEST 4: returnTotalMessages() - Tests if total messages returned
+    //Tests if total messages incrementin are returned
     @Test
     public void testReturnTotalMessages() 
     {
@@ -37,7 +37,7 @@ public class MessageTest
         assertTrue(total >= 0);
     }
     
-    // TEST 5: printMessages() - Tests if messages can be printed
+    //Tests if messages can be printed
     @Test
     public void testPrintMessages() 
     {
