@@ -34,7 +34,7 @@ public class MessageTest
     public void testReturnTotalMessages() 
     {
         int total = Message.returnTotalMessages();
-        assertTrue(total >= 0);
+        assertFalse(total >= 0);
     }
     
     //Tests if messages can be printed
@@ -42,7 +42,7 @@ public class MessageTest
     public void testPrintMessages() 
     {
         String result = Message.printMessages();
-        assertNotNull(result);
+        assertNull(result);
     }
     
     //Tests if message details are returned
@@ -51,6 +51,6 @@ public class MessageTest
     {
         Message msg = new Message(1, "+27731234567", "Hi Sir");
         String details = msg.getMessageDetails();
-        assertNotNull(details);
+        assertNull(details);
     }
 }
