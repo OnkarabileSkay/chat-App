@@ -133,7 +133,7 @@ public class Login
             
             if (Message.checkRecipientCell(recipient).equals("correctFormate"))
             {
-                System.out.println("Cell number accepted!");
+                System.out.println("Cell number successfully captured!");
                 correctRecipientNumber = true;
             }
             else
