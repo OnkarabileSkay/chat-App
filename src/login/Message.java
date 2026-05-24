@@ -9,7 +9,7 @@ package login;
 
 import java.util.Scanner;
 
-public class message
+public class Message
 {
     // DECLARING STATIC VARIABLES
     static String userName;
@@ -298,5 +298,21 @@ public class message
         {
             return "A failed login";
         }
+    }
+
+    static String returnTotalMessages() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    static Object checkRecipientCell(String recipient) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    Message(int messageNumber, String recipient, String messageText) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    boolean getMessageDetails() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

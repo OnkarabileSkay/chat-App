@@ -1,57 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package login;
-
-
-
 
 import java.util.Scanner;
 
 public class Login
 {
-    // DECLARING STATIC VARIABLES
-    static String userName;
-    static String password;
-    static String cellNumber;
-    static String firstName;
-    static String lastName;
 
-    public static void main(String[] args)
-    {
-        Scanner scanner = new Scanner(System.in);
+	//DECLERING STATIC VARIABLES
+	static String userName;
+	static String password;
+	static String cellNumber;
+	static String firstName;
+	static String lastName;
 
-        registerUser(scanner);
+	 public static void main(String[] args)
+	{
+		Scanner scanner = new Scanner(System.in);
 
-        boolean loginSuccess = false;
+		registerUser(scanner);
 
-        while (loginSuccess == false)
-        {
-            System.out.println("\n");
-            System.out.println("WELCOME TO CHAT APP, PLEASE LOGIN");
+		boolean loginSuccess;
+		loginSuccess= false;
 
-            System.out.print("Enter username: ");
-            String inputUserName = scanner.nextLine();
+		while (!loginSuccess)
+		{
+			System.out.println("\n");
+			System.out.println("WELCOME TO CHAT APP, PLEASE LOGIN");
 
-            System.out.print("Enter password: ");
-            String inputPassword = scanner.nextLine();
+			System.out.print("Enter username: ");
+			String inputUserName = scanner.nextLine();
 
-            loginSuccess = loginUser(inputUserName, inputPassword);
+			System.out.print("Enter password: ");
+			String inputPassword = scanner.nextLine();
 
-            System.out.println(returnLoginStatus(loginSuccess));
+			loginSuccess = loginUser(inputUserName, inputPassword);
 
-            if (loginSuccess == true)
-            {
-                System.out.println("Welcome back " + firstName + " " + lastName + ", it is great to see you again.");
-                // After login, start the messaging method
-                messagingMethod(scanner);
-            }
-        }
-    }
-    
- //TEst
-    public static void messagingMethod(Scanner scanner)
+			System.out.println(returnLoginStatus(loginSuccess));
+
+			if (loginSuccess)
+			{
+				System.out.println("Welcome back " + firstName + "," + lastName + " it is great to see you again.");
+                                // After login, start the messaging class
+                                MessagingMethod(scanner);
+			}
+			else
+			{
+
+			}
+		}
+	}
+             // runs the messaging app after login
+    public static void MessagingMethod(Scanner scanner)
     {
         System.out.println("\n");
         System.out.println("");
@@ -62,6 +60,9 @@ public class Login
         System.out.print("How many messages would you like to send?: ");
         int maxMessages = scanner.nextInt();
         System.out.print("You will send: " + maxMessages + " Messages Only. ");
+        
+        
+        
         int messageSent = 0;
         boolean loopControl = true;
         
@@ -78,7 +79,7 @@ public class Login
             int Userchoice = scanner.nextInt();
             
             
-            //if statements to display what the user choosed
+            // Using if statements to display what the user choosed
             if (Userchoice == 1)
             {
                 if (messageSent < maxMessages)
@@ -92,7 +93,7 @@ public class Login
                         System.out.println("\n");
                         System.out.println("You have completed all " + maxMessages + " messages!");
                         System.out.println("Total messages sent: " + Message.returnTotalMessages());
-                        System.out.println("");
+                        
                     }
                 }
                 else
@@ -116,10 +117,10 @@ public class Login
         }
     }
     
-    // Each message send
+    // This sends one message
     public static void sendMessage(Scanner scanner, int messageNumber)
     {
-        System.out.println("\n Sending Message Number " + messageNumber + ".");
+        System.out.println("\n--- Sending Message Number " + messageNumber + " ---");
         scanner.nextLine();
         // Get recipient cell number
         String recipient = "";
@@ -127,12 +128,12 @@ public class Login
         
         while (correctRecipientNumber == false)
         {
-            System.out.print("Enter recipient's cell number: ");
+            System.out.print("Enter recipient's cell number (must start with + and be max 10 characters): ");
              recipient  = scanner.nextLine();
             
             if (Message.checkRecipientCell(recipient).equals("correctFormate"))
             {
-                System.out.println("Cell number succesfully captured!");
+                System.out.println("Cell number accepted!");
                 correctRecipientNumber = true;
             }
             else
@@ -141,7 +142,7 @@ public class Login
             }
         }
         
-        // User enters the message text
+        // Get message text
         String messageText = "";
         boolean validMessage = false;
         
@@ -162,137 +163,158 @@ public class Login
             }
         }
         
-        // Create the actual message object
+        // Create the message object
         Message newMessage = new Message(messageNumber, recipient, messageText);
         
-        // Show message details
-        System.out.println("\n Message Details View");
+        // Show message preview
+        System.out.println("\n Message Details View ");
         System.out.println(newMessage.getMessageDetails());
         System.out.println("\n");
         
         // Ask what to do with the message
         String result = newMessage.sendMessage();
         System.out.println(result);
-    
+        
+      
     if (result.equals("Message sent successfully!")) 
     {
-    System.out.println("\nSENT MESSAGE");
+    System.out.println("\n SENT MESSAGE ");
     System.out.println(newMessage.getMessageDetails());
-    System.out.println("\n");
+    System.out.println("");
    }
     }
 
-    // REGISTERING THE USER (your existing code - unchanged)
-    public static void registerUser(Scanner scanner)
-    {
-        while (true)
-        {
-            System.out.print("Enter username: ");
-            userName = scanner.nextLine();
+	//REGISTERING THE USER
+	public static void registerUser(Scanner scanner)
+	{
 
-            if (checkUsername(userName) == true)
-            {
-                System.out.println("Username successfully captured.");
-                break;
-            }
-            else
-            {
-                System.out.println("Username is not correctly formatted; Please ensure that your username contains an underscore(_) and is no more than five Characters in length ");
-            }
-        }
+		//METHOD REGISTERS THE USER
+		while (true)
+		{
+			System.out.print("Enter username: ");
+			userName = scanner.nextLine();
 
-        while (true)
-        {
-            System.out.print("Enter password: ");
-            password = scanner.nextLine();
+			if (checkUsername(userName))
+			{
+				System.out.println("Username successfully captured.");
+				break;
+			}
+			else
+			{
+				System.out.println("Username is not correctly formatted; Please ensure that your username contains an underscore(_) and is no more than five Characters in length ");
+			}
+		}
 
-            if (checkPasswordComplexity(password) == true) {
-                System.out.println("Password successfully captured.");
-                break;
-            } else {
-                System.out.println("Password is not correctly formatted; Please ensure that the password contains at least eight Characters, a capital letter, a number, and a special character");
-            }
-        }
 
-        while (true)
-        {
-            System.out.print("Enter cell phone number: ");
-            cellNumber = scanner.nextLine();
+		while (true)
+		{
+			System.out.print("Enter password: ");
+			password = scanner.nextLine();
 
-            if (checkCellNumber(cellNumber) == true) {
-                System.out.println("Cell number successfully added.");
-                break;
-            }
-            else
-            {
-                System.out.println("Cell phone number incorrectly formatted or does not contain international code");
-            }
-        }
+			if (checkPasswordComplexity(password)) {
+				System.out.println("Password successfully captured.");
+				break;
+			} else {
+				System.out.println("Password is not correctly formatted; Please ensure that the password contains at least eight Characters, a capital letter, a number, and a special character");
+			}
+		}
 
-        System.out.print("Enter your first name: ");
-        firstName = scanner.nextLine();
 
-        System.out.print("Enter your last name: ");
-        lastName = scanner.nextLine();
-    }
+		while (true)
+		{
+			System.out.print("Enter cell phone number: ");
+			cellNumber = scanner.nextLine();
+
+			if (checkCellNumber(cellNumber)) {
+				System.out.println("Cell number successfully added.");
+				break;
+			}
+			else
+			{
+				System.out.println("Cell phone number incorently formatted or does not contain international code");
+			}
+		}
+
+		// ASKS THE USER FOR HIS || HER FIRST AND LAST NAME
+		System.out.print("Enter your first name: ");
+		firstName = scanner.nextLine();
+
+		System.out.print("Enter your last name: ");
+		lastName = scanner.nextLine();
+	}
+
+	
+        //METHOD THAT CHECKS IF THE USER ENTERED THE REQUIRED USERNAME
+	public static boolean checkUsername(String storedUsername)
+	{
+		return storedUsername.length() <= 5 && storedUsername.contains("_");
+	}
+	//METHOD THAT CHECKS IF THE USER ENTERED THE REQUIRED PASSWORD
+	public static boolean checkPasswordComplexity(String userPassword)
+	{
+		boolean hasUppercase = false;
+		boolean hasDigit = false;
+		boolean hasSpecial = false;
+
+		for (int i = 0; i < userPassword.length(); i++)
+		{
+			char c = userPassword.charAt(i);
+
+			if (Character.isUpperCase(c)) hasUppercase = true;
+			else if (Character.isDigit(c)) hasDigit = true;
+			else if (!Character.isLetterOrDigit(c)) hasSpecial = true;
+		}
+
+		return userPassword.length() >= 8 && hasUppercase && hasDigit && hasSpecial;
+	}
+	//METHOD THAT CHECKS IF THE USER ENTERED THE REQUIRED CELL PHONE NUMBER
+	public static boolean checkCellNumber(String userCellNumber)
+	{
+		if (!userCellNumber.startsWith("+27"))
+			return false;
+
+		String onlyNumbers = userCellNumber.substring(3);
+
+		if (onlyNumbers.length() != 9)
+			return false;
+
+		for (int i = 0; i < onlyNumbers.length(); i++)
+		{
+			if (!Character.isDigit(onlyNumbers.charAt(i)))
+				return false;
+		}
+
+		return true;
+	}
+
+	
+	
+    /// @param storedUsername
+    /// @param storedPassword
+    /// @return  
+        //METHOD THAT CHECKS IF THE REGISTRATION DETAILS MATCH THE LOGIN DETAILS
+	public static boolean loginUser(String storedUsername, String storedPassword)
+	{
+		return storedUsername.equals(userName) && storedPassword.equals(password);
+	}
+	//METHOD THAT DISPLAYS THE FINAL RESULTS OF LOGIN
+
+	public static String returnLoginStatus(boolean logdin)
+	{
+		if (logdin )
+		{
+			return "A successful login";
+		}
+		else
+		{
+			return "A failed login";
+		}
+
+
+	}   
+        //WHY GITHUB
+
     
-    // YOUR EXISTING METHODS (unchanged)
-    public static boolean checkUsername(String storedUsername)
-    {
-        return storedUsername.length() <= 5 && storedUsername.contains("_");
-    }
+
     
-    public static boolean checkPasswordComplexity(String userPassword)
-    {
-        boolean hasUppercase = false;
-        boolean hasDigit = false;
-        boolean hasSpecial = false;
-
-        for (int i = 0; i < userPassword.length(); i++)
-        {
-            char c = userPassword.charAt(i);
-
-            if (Character.isUpperCase(c) == true) hasUppercase = true;
-            else if (Character.isDigit(c) == true) hasDigit = true;
-            else if (Character.isLetterOrDigit(c) == false) hasSpecial = true;
-        }
-
-        return userPassword.length() >= 8 && hasUppercase == true && hasDigit == true && hasSpecial == true;
-    }
-    
-    public static boolean checkCellNumber(String userCellNumber)
-    {
-        if (userCellNumber.startsWith("+27") == false)
-            return false;
-
-        String onlyNumbers = userCellNumber.substring(3);
-
-        if (onlyNumbers.length() != 9)
-            return false;
-
-        for (int i = 0; i < onlyNumbers.length(); i++)
-        {
-            if (Character.isDigit(onlyNumbers.charAt(i)) == false)
-                return false;
-        }
-
-        return true;
-    }
-    
-    public static boolean loginUser(String storedUsername, String storedPassword)
-    {
-        return storedUsername.equals(userName) && storedPassword.equals(password);
-    }
-    
-    public static String returnLoginStatus(boolean loggedin)
-    {
-        if (loggedin == true)
-        {
-            return "A successful login";
-        }
-        else
-        {
-            return "A failed login";
-        }
-    }
 }
