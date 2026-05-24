@@ -128,7 +128,7 @@ public class Login
         
         while (correctRecipientNumber == false)
         {
-            System.out.print("Enter recipient's cell number (must start with + and be max 10 characters): ");
+            System.out.print("Enter recipient's cell number: ");
              recipient  = scanner.nextLine();
             
             if (Message.checkRecipientCell(recipient).equals("correctFormate"))
