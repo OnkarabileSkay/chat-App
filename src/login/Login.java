@@ -39,6 +39,8 @@ public class Login
 			if (loginSuccess)
 			{
 				System.out.println("Welcome back " + firstName + "," + lastName + " it is great to see you again.");
+                                // After login, start the messaging class
+                                MessagingMethod(scanner);
 			}
 			else
 			{
@@ -46,6 +48,141 @@ public class Login
 			}
 		}
 	}
+             // runs the messaging app after login
+    public static void MessagingMethod(Scanner scanner)
+    {
+        System.out.println("\n");
+        System.out.println("");
+        System.out.println("Welcome to QuickChat");
+        System.out.println("");
+        
+        // Ask the user how many message they will like to send
+        System.out.print("How many messages would you like to send?: ");
+        int maxMessages = scanner.nextInt();
+        System.out.print("You will send: " + maxMessages + " Messages Only. ");
+        
+        
+        
+        int messageSent = 0;
+        boolean loopControl = true;
+        
+        // This while loop will keep on runing until ke loopControl become false 
+        while (loopControl == true)
+        {
+            System.out.println("\n");
+            System.out.println("  QuickChat Menu  ");
+            System.out.println("Option 1: Send Messages");
+            System.out.println("Option 2: Show recently sent messages");
+            System.out.println("Option 3: Quit");
+            System.out.print("Choose an option (1, 2, or 3): ");
+             
+            int Userchoice = scanner.nextInt();
+            
+            
+            // Using if statements to display what the user choosed
+            if (Userchoice == 1)
+            {
+                if (messageSent < maxMessages)
+                {
+                    sendMessage(scanner, messageSent + 1);
+                    messageSent = messageSent + 1;
+                    
+                    // Check if all messages are done
+                    if (messageSent == maxMessages)
+                    {
+                        System.out.println("\n");
+                        System.out.println("You have completed all " + maxMessages + " messages!");
+                        System.out.println("Total messages sent: " + Message.returnTotalMessages());
+                        
+                    }
+                }
+                else
+                {
+                    System.out.println("You have already reached your limit of " + maxMessages + " messages.");
+                }
+            }
+            else if (Userchoice == 2)
+            {
+                System.out.println("Coming Soon - This feature is still being developed.");
+            }
+            else if (Userchoice == 3)
+            {
+                System.out.println("Thank you for using QuickChat. Goodbye!");
+                loopControl = false; 
+            }
+            else
+            {
+                System.out.println("Incorrect option. Please choose between 1, 2, and 3.");
+            }
+        }
+    }
+    
+    // This sends one message
+    public static void sendMessage(Scanner scanner, int messageNumber)
+    {
+        System.out.println("\n Sending Message Number " + messageNumber + " .");
+        scanner.nextLine();
+        // Get recipient cell number
+        String recipient = "";
+        boolean correctRecipientNumber = false;
+        
+        while (correctRecipientNumber == false)
+        {
+            System.out.print("Enter recipient's cell number: ");
+             recipient  = scanner.nextLine();
+            
+            if (Message.checkRecipientCell(recipient).equals("correctFormate"))
+            {
+                System.out.println("Cell number successfully captured!");
+                correctRecipientNumber = true;
+            }
+            else
+            {
+                System.out.println("Cell number is incorrectly formated or does not contain an international code. Please correct the number and try again,");
+            }
+        }
+        
+        // Get message text
+        String messageText = "";
+        boolean validMessage = false;
+        
+        while (validMessage == false)
+        {
+            System.out.print("Enter your message: ");
+            messageText = scanner.nextLine();
+            
+            if (messageText.length() <= 250)
+            {
+                System.out.println("Message ready to send!");
+                validMessage = true;
+            }
+            else
+            {
+                System.out.println("Message exceeds 250 characters by" +messageText.length() + " Please reduce the size");
+                
+            }
+        }
+        
+        // Create the message object
+        Message newMessage = new Message(messageNumber, recipient, messageText);
+        
+        // Show message preview
+        System.out.println("\n Message Details View ");
+        System.out.println(newMessage.getMessageDetails());
+        System.out.println("\n");
+        
+        // Ask what to do with the message
+        String result = newMessage.sendMessage();
+        System.out.println(result);
+        
+      
+    if (result.equals("Message sent successfully!")) 
+    {
+    System.out.println("\n SENT MESSAGE ");
+    System.out.println(newMessage.getMessageDetails());
+    System.out.println("");
+   }
+    }
 
 	//REGISTERING THE USER
 	public static void registerUser(Scanner scanner)
@@ -175,4 +312,9 @@ public class Login
 
 
 	}   
+        //WHY GITHUB
+
+    
+
+    
 }
