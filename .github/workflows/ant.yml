@@ -5,9 +5,9 @@ name: Java CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "Part2POE", "Part3" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "Part2POE", "Part3" ]
 
 jobs:
   build:
