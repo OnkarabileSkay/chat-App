@@ -69,7 +69,7 @@ public class Login
         // This while loop will keep on runing until ke loopControl become false 
         while (loopControl == true)
         {
-            System.out.println("\n");
+            System.out.println(" ");
             System.out.println("  QuickChat Menu  ");
             System.out.println("Option 1: Send Messages:");
             System.out.println("Option 2: Show recently sent messages:");
@@ -167,7 +167,6 @@ public class Login
                 
             }
         }
-        
         // Create the message object
         Message newMessage = new Message(messageNumber, recipient, messageText);
         
@@ -179,21 +178,16 @@ public class Login
         // Ask what to do with the message
         String result = newMessage.sendMessage();
         System.out.println(result);
-        
-      
     if (result.equals("Message sent successfully!")) 
     {
     System.out.println("\n SENT MESSAGE ");
     System.out.println(newMessage.getMessageDetails());
     System.out.println("");
    }
-    
     }
-
 	//REGISTERING THE USER
 	public static void registerUser(Scanner scanner)
 	{
-
 		//METHOD REGISTERS THE USER
 		while (true)
 		{
@@ -210,8 +204,6 @@ public class Login
 				System.out.println("Username is not correctly formatted; Please ensure that your username contains an underscore(_) and is no more than five Characters in length ");
 			}
 		}
-
-
 		while (true)
 		{
 			System.out.print("Enter password: ");
@@ -224,8 +216,6 @@ public class Login
 				System.out.println("Password is not correctly formatted; Please ensure that the password contains at least eight Characters, a capital letter, a number, and a special character");
 			}
 		}
-
-
 		while (true)
 		{
 			System.out.print("Enter cell phone number: ");
@@ -240,7 +230,6 @@ public class Login
 				System.out.println("Cell phone number incorently formatted or does not contain international code");
 			}
 		}
-
 		// ASKS THE USER FOR HIS || HER FIRST AND LAST NAME
 		System.out.print("Enter your first name: ");
 		firstName = scanner.nextLine();
@@ -248,8 +237,6 @@ public class Login
 		System.out.print("Enter your last name: ");
 		lastName = scanner.nextLine();
 	}
-
-	
         //METHOD THAT CHECKS IF THE USER ENTERED THE REQUIRED USERNAME
 	public static boolean checkUsername(String storedUsername)
 	{
@@ -292,9 +279,6 @@ public class Login
 
 		return true;
 	}
-
-	
-	
     /// @param storedUsername
     /// @param storedPassword
     /// @return  
@@ -341,8 +325,8 @@ public static void longestMessage()
         }
     }
     
-    System.out.println("Longest message (" + longestLength + " characters):");
-    System.out.println("\n" + longestMessage);
+    System.out.println("Longest message:" + longestLength + " characters");
+    System.out.println(longestMessage);
 }
  
 }
