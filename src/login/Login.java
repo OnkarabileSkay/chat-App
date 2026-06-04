@@ -71,10 +71,11 @@ public class Login
         {
             System.out.println("\n");
             System.out.println("  QuickChat Menu  ");
-            System.out.println("Option 1: Send Messages");
-            System.out.println("Option 2: Show recently sent messages");
-            System.out.println("Option 3: Quit");
-            System.out.print("Choose an option (1, 2, or 3): ");
+            System.out.println("Option 1: Send Messages:");
+            System.out.println("Option 2: Show recently sent messages:");
+            System.out.println("Option 3: Quit:");
+            System.out.println("Option 4: Displaying the longest message:");
+            System.out.println("Choose an option: ");
              
             int Userchoice = scanner.nextInt();
             
@@ -109,6 +110,10 @@ public class Login
             {
                 System.out.println("Thank you for using QuickChat. Goodbye!");
                 loopControl = false; 
+            }
+            else if (Userchoice==4)
+            {
+                longestMessage();
             }
             else
             {
@@ -182,6 +187,7 @@ public class Login
     System.out.println(newMessage.getMessageDetails());
     System.out.println("");
    }
+    
     }
 
 	//REGISTERING THE USER
@@ -311,9 +317,32 @@ public class Login
 		}
 
 
-	}   
+	}
+public static void longestMessage()
+{
+    String allMessages = Message.printMessages();
+    
+    if (allMessages.equals("No messages sent yet."))
+    {
+        System.out.println("No messages was sent.");
+        return;
+    }
+    
+    String[] individualMessages = allMessages.split("\n\n");
+    String longestMessage = "";
+    int longestLength = 0;
+    
+    for (int i = 0; i < individualMessages.length; i++)
+    {
+        if (individualMessages[i].length() > longestLength)
+        {
+            longestLength = individualMessages[i].length();
+            longestMessage = individualMessages[i];
+        }
+    }
+    
+    System.out.println("Longest message (" + longestLength + " characters):");
+    System.out.println("\n" + longestMessage);
+}
  
-    
-
-    
 }
