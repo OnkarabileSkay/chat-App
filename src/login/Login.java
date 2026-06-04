@@ -51,17 +51,12 @@ public class Login
              // runs the messaging app after login
     public static void MessagingMethod(Scanner scanner)
     {
-        System.out.println("\n");
         System.out.println("");
         System.out.println("Welcome to QuickChat");
-        System.out.println("");
-        
         // Ask the user how many message they will like to send
         System.out.print("How many messages would you like to send?: ");
         int maxMessages = scanner.nextInt();
         System.out.print("You will send: " + maxMessages + " Messages Only. ");
-        
-        
         
         int messageSent = 0;
         boolean loopControl = true;
@@ -74,12 +69,11 @@ public class Login
             System.out.println("Option 1: Send Messages:");
             System.out.println("Option 2: Show recently sent messages:");
             System.out.println("Option 3: Quit:");
-            System.out.println("Option 4: Displaying the longest message:");
+            System.out.println("Option 4: Stored Messages:");
             System.out.println("Choose an option: ");
              
             int Userchoice = scanner.nextInt();
-            
-            
+       
             // Using if statements to display what the user choosed
             if (Userchoice == 1)
             {
@@ -94,7 +88,6 @@ public class Login
                         System.out.println("\n");
                         System.out.println("You have completed all " + maxMessages + " messages!");
                         System.out.println("Total messages sent: " + Message.returnTotalMessages());
-                        
                     }
                 }
                 else
@@ -113,7 +106,7 @@ public class Login
             }
             else if (Userchoice==4)
             {
-                longestMessage();
+                storedMessagesOption4(scanner);
             }
             else
             {
@@ -302,6 +295,44 @@ public class Login
 
 
 	}
+public static void storedMessagesOption4(Scanner scanner)
+{
+    boolean option4Choices = true;
+    
+    while (option4Choices)
+    {
+        System.out.println("Option 4 features:");
+        System.out.println("a. Display sender and recipient of all stored messages");
+        System.out.println("b. Display the longest stored message");
+        System.out.println("c. Search for a message ID");
+        System.out.println("d. Search for all messages for a particular recipient");
+        System.out.println("e. Delete a message using message hash");
+        System.out.println("f. Display full report of all stored messages");
+        System.out.println("g. Back to Main Menu");
+        System.out.print("Choose an option (a, b, c, d, e, f, or g): ");
+        
+        String choice = scanner.next();
+        scanner.nextLine(); // consume newline
+        
+        if (choice.equalsIgnoreCase("a"))
+        {
+            displayAllMessages();
+        }
+        else if (choice.equalsIgnoreCase("b"))
+        {
+            longestMessage();
+        }
+        else if (choice.equalsIgnoreCase("g"))
+        {
+            System.out.println("Returning to Main Menu...");
+            option4Choices = false;
+        }
+        else
+        {
+            System.out.println("Feature coming soon: " + choice);
+        }
+    }
+}
 public static void longestMessage()
 {
     String allMessages = Message.printMessages();
@@ -327,6 +358,42 @@ public static void longestMessage()
     
     System.out.println("Longest message:" + longestLength + " characters");
     System.out.println(longestMessage);
+}
+public static void displayAllMessages()
+{
+    System.out.println("");
+    System.out.println("Sender And Receivers All Messages");
+    System.out.println("Sender  :  Recipient");
+    String allMessages = Message.printMessages();
+    
+    if (allMessages.equals("No messages sent yet."))
+    {
+        System.out.println("No messages to display.");
+        return;
+    }
+    
+    String[] individualMessages = allMessages.split("\n\n");
+    
+    for (int i = 0; i < individualMessages.length; i++)
+    {
+        String msg = individualMessages[i];
+        String recipient = "";
+        String sender = "You";
+        
+        String[] lines = msg.split("\n");
+        for (int j = 0; j < lines.length; j++)
+        {
+            if (lines[j].startsWith("Recipient:"))
+            {
+                recipient = lines[j].substring(10).trim();
+                break;
+            }
+        }
+        
+        System.out.println(sender + "\t\t\t| " + recipient);
+    }
+    
+    System.out.println("\nTotal: " + Message.returnTotalMessages() + " messages");
 }
  
 }
