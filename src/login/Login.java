@@ -309,28 +309,35 @@ public static void storedMessagesOption4(Scanner scanner)
         System.out.println("e. Delete a message using message hash");
         System.out.println("f. Display full report of all stored messages");
         System.out.println("g. Back to Main Menu");
-        System.out.print("Choose an option (a, b, c, d, e, f, or g): ");
+        System.out.print("Choose an option: ");
         
-        String choice = scanner.next();
-        scanner.nextLine(); // consume newline
+        String option4Choice = scanner.next();
+        scanner.nextLine();
         
-        if (choice.equalsIgnoreCase("a"))
-        {
+        if (option4Choice.equalsIgnoreCase("a"))
+         {
             displayAllMessages();
-        }
-        else if (choice.equalsIgnoreCase("b"))
-        {
-            longestMessage();
-        }
-        else if (choice.equalsIgnoreCase("g"))
-        {
-            System.out.println("Returning to Main Menu...");
-            option4Choices = false;
-        }
+         }
+        else 
+            if (option4Choice.equalsIgnoreCase("b"))
+              {
+                longestMessage();
+              }
         else
-        {
-            System.out.println("Feature coming soon: " + choice);
-        }
+            if (option4Choice.equalsIgnoreCase("c"))
+              {
+                searchMessageID(scanner);
+              }
+        else 
+            if (option4Choice.equalsIgnoreCase("g"))
+              {
+                System.out.println("Returning to Main Menu...");
+                option4Choices = false;
+              }
+        else
+           {
+            System.out.println("Feature coming soon: " + option4Choice);
+           }
     }
 }
 public static void longestMessage()
@@ -358,6 +365,7 @@ public static void longestMessage()
     
     System.out.println("Longest message:" + longestLength + " characters");
     System.out.println(longestMessage);
+    System.out.println("");
 }
 public static void displayAllMessages()
 {
@@ -390,10 +398,67 @@ public static void displayAllMessages()
             }
         }
         
-        System.out.println(sender + "\t\t\t| " + recipient);
+        System.out.println(sender + " : " + recipient);
     }
     
-    System.out.println("\nTotal: " + Message.returnTotalMessages() + " messages");
+    System.out.println("Total: " + Message.returnTotalMessages() + " messages");
+    System.out.println("");
+    
+}
+
+public static void searchMessageID(Scanner scanner)
+{
+    System.out.print("Enter Message ID to search for: ");
+    String searchedMessageID = scanner.nextLine();
+    
+    String allMessages = Message.printMessages();
+    
+    if (allMessages.equals("No messages sent yet."))
+    {
+        System.out.println("No messages to search.");
+        return;
+    }
+    
+    String[] individualMessages = allMessages.split("\n\n");
+    boolean found = false;
+    
+    for (int i = 0; i < individualMessages.length; i++)
+    {
+        String msg = individualMessages[i];
+        
+        // Look for Message ID in the message
+        if (msg.contains("Message ID: " + searchedMessageID) || msg.contains(searchedMessageID))
+        {
+           //If it is found, it will do the following 
+            String recipient = "";
+            String messageText = "";
+            String[] lines = msg.split("\n");
+            
+            for (String line : lines) 
+            {
+                if (line.startsWith("Recipient:")) 
+                {
+                    recipient = line.substring(10).trim();
+                } 
+                else 
+                    if (line.startsWith("Message:")) 
+                      {
+                        messageText = line.substring(8).trim();
+                      }
+            }
+            
+            System.out.println("Recipient: " + recipient);
+            System.out.println("Message: " + messageText);
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found)
+    {
+        System.out.println("Message ID '" + searchedMessageID + "' not found.");
+    }
+    System.out.println("");
 }
  
 }
