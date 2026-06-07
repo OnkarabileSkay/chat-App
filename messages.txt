@@ -13,3 +13,13 @@ Message Hash: 48:2:OHFRTYHHGDSXZX
 Recipient: +12309876
 Message: ohf mhtu lkc fghjiuyv tr gfdsdv sdfghj yex kjhgc hgxcv xer jredfghb rtyhhgdsxzx 
 
+Message ID: 285306110
+Message Hash: 28:2:YOOHOOOO,GATE
+Recipient: +654687
+Message: Yoohoooo, I am at the gate
+
+Message ID: 970488927
+Message Hash: 97:3:ITTIME??
+Recipient: +9081234
+Message: It is dinner time??
+

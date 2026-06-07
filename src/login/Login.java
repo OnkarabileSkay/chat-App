@@ -302,42 +302,43 @@ public static void storedMessagesOption4(Scanner scanner)
     while (option4Choices)
     {
         System.out.println("Option 4 features:");
-        System.out.println("a. Display sender and recipient of all stored messages");
-        System.out.println("b. Display the longest stored message");
-        System.out.println("c. Search for a message ID");
-        System.out.println("d. Search for all messages for a particular recipient");
-        System.out.println("e. Delete a message using message hash");
-        System.out.println("f. Display full report of all stored messages");
-        System.out.println("g. Back to Main Menu");
+        System.out.println("1. Display sender and recipient of all stored messages");
+        System.out.println("2. Display the longest stored message");
+        System.out.println("3. Search for a message ID");
+        System.out.println("4. Search for all messages for a particular recipient");
+        System.out.println("5. Delete a message using message hash");
+        System.out.println("6. Display full report of all stored messages");
+        System.out.println("0. Back to Main Menu");
         System.out.print("Choose an option: ");
         
-        String option4Choice = scanner.next();
+        int option4Choice = scanner.nextInt();
         scanner.nextLine();
         
-        if (option4Choice.equalsIgnoreCase("a"))
+        if ( option4Choice == 1 )
          {
             displayAllMessages();
          }
         else 
-            if (option4Choice.equalsIgnoreCase("b"))
+            if (option4Choice == 2)
               {
                 longestMessage();
               }
         else
-            if (option4Choice.equalsIgnoreCase("c"))
+            if (option4Choice == 3)
               {
                 searchMessageID(scanner);
               }
         else 
-            if (option4Choice.equalsIgnoreCase("g"))
+            if (option4Choice==4)
+            {
+                searchUsingRecipientsNumber(scanner);
+            }
+        else 
+            if (option4Choice == 0)
               {
                 System.out.println("Returning to Main Menu...");
                 option4Choices = false;
               }
-        else
-           {
-            System.out.println("Feature coming soon: " + option4Choice);
-           }
     }
 }
 public static void longestMessage()
@@ -459,6 +460,68 @@ public static void searchMessageID(Scanner scanner)
         System.out.println("Message ID '" + searchedMessageID + "' not found.");
     }
     System.out.println("");
+}
+public static void searchUsingRecipientsNumber(Scanner scanner)
+{
+    System.out.println("\n");
+    
+    System.out.print("Enter recipient's cell number to search for: ");
+    String searchRecipient = scanner.nextLine();
+    
+    String allMessages = Message.printMessages();
+    
+    if (allMessages.equals("No messages sent yet."))
+    {
+        System.out.println("No messages to search.");
+        return;
+    }
+    
+    String[] individualMessages = allMessages.split("\n\n");
+    boolean found = false;
+    int count = 0;
+    
+    System.out.println("\n");
+    
+    for (int i = 0; i < individualMessages.length; i++)
+    {
+        String msg = individualMessages[i];
+        
+        // Look for recipient in the message
+        if (msg.contains("Recipient: " + searchRecipient) || msg.contains(searchRecipient))
+        {
+            // Extract message details
+            String messageText = "";
+            String messageID = "";
+            String[] lines = msg.split("\n");
+            
+            for (int j = 0; j < lines.length; j++)
+            {
+                if (lines[j].startsWith("Message ID:"))
+                {
+                    messageID = lines[j].substring(11).trim();
+                }
+                else if (lines[j].startsWith("Message:"))
+                {
+                    messageText = lines[j].substring(8).trim();
+                }
+            }
+            
+            System.out.println("Message ID: " + messageID);
+            System.out.println("Message: " + messageText);
+            System.out.println(" ");
+            found = true;
+            count++;
+        }
+    }
+    
+    if (!found)
+    {
+        System.out.println("No messages found for recipient: " + searchRecipient);
+    }
+    else
+    {
+        System.out.println("\nTotal messages found for " + searchRecipient + ": " + count);
+    }
 }
  
 }
