@@ -1,7 +1,5 @@
 package login;
-
 import java.util.Scanner;
-
 public class Login
 {
 
@@ -53,11 +51,13 @@ public class Login
     {
         System.out.println("");
         System.out.println("Welcome to QuickChat");
+        System.out.println(" ");
         // Ask the user how many message they will like to send
         System.out.print("How many messages would you like to send?: ");
         int maxMessages = scanner.nextInt();
+        System.out.println(" ");
         System.out.print("You will send: " + maxMessages + " Messages Only. ");
-        
+        System.out.println(" ");
         int messageSent = 0;
         boolean loopControl = true;
         
@@ -68,9 +68,9 @@ public class Login
             System.out.println("  QuickChat Menu  ");
             System.out.println("Option 1: Send Messages:");
             System.out.println("Option 2: Show recently sent messages:");
-            System.out.println("Option 3: Quit:");
             System.out.println("Option 4: Stored Messages:");
-            System.out.println("Choose an option: ");
+            System.out.println("Option 0: Quit:");
+            System.out.print("Choose an option: ");
              
             int Userchoice = scanner.nextInt();
        
@@ -92,14 +92,15 @@ public class Login
                 }
                 else
                 {
+                    System.out.println(" ");
                     System.out.println("You have already reached your limit of " + maxMessages + " messages.");
                 }
             }
             else if (Userchoice == 2)
             {
-                System.out.println("Coming Soon - This feature is still being developed.");
+                displayLastMessage();
             }
-            else if (Userchoice == 3)
+            else if (Userchoice == 0)
             {
                 System.out.println("Thank you for using QuickChat. Goodbye!");
                 loopControl = false; 
@@ -173,7 +174,7 @@ public class Login
         System.out.println(result);
     if (result.equals("Message sent successfully!")) 
     {
-    System.out.println("\n SENT MESSAGE ");
+    System.out.println("\n Message Details View ");
     System.out.println(newMessage.getMessageDetails());
     System.out.println("");
    }
@@ -301,6 +302,7 @@ public static void storedMessagesOption4(Scanner scanner)
     
     while (option4Choices)
     {
+        System.out.println(" ");
         System.out.println("Option 4 features:");
         System.out.println("1. Display sender and recipient of all stored messages");
         System.out.println("2. Display the longest stored message");
@@ -333,16 +335,27 @@ public static void storedMessagesOption4(Scanner scanner)
             {
                 searchUsingRecipientsNumber(scanner);
             }
+        else
+            if (option4Choice==5)
+            {
+                deleteAMessageUsingHash(scanner);
+            }
+        else
+            if (option4Choice==6)
+            {
+                displayReportForMessages();
+            }
         else 
             if (option4Choice == 0)
               {
-                System.out.println("Returning to Main Menu...");
                 option4Choices = false;
               }
+       
     }
 }
 public static void longestMessage()
 {
+    System.out.println(" ");
     String allMessages = Message.printMessages();
     
     if (allMessages.equals("No messages sent yet."))
@@ -371,8 +384,7 @@ public static void longestMessage()
 public static void displayAllMessages()
 {
     System.out.println("");
-    System.out.println("Sender And Receivers All Messages");
-    System.out.println("Sender  :  Recipient");
+    System.out.println("Sender               :  Recipient");
     String allMessages = Message.printMessages();
     
     if (allMessages.equals("No messages sent yet."))
@@ -387,19 +399,19 @@ public static void displayAllMessages()
     {
         String msg = individualMessages[i];
         String recipient = "";
-        String sender = "You";
+        String sender = "You" + "( " + cellNumber + " )";
         
         String[] lines = msg.split("\n");
         for (int j = 0; j < lines.length; j++)
         {
             if (lines[j].startsWith("Recipient:"))
             {
-                recipient = lines[j].substring(10).trim();
+                recipient = lines[j].substring(10);
                 break;
             }
         }
         
-        System.out.println(sender + " : " + recipient);
+        System.out.println(sender + "  :  " + recipient);
     }
     
     System.out.println("Total: " + Message.returnTotalMessages() + " messages");
@@ -409,6 +421,7 @@ public static void displayAllMessages()
 
 public static void searchMessageID(Scanner scanner)
 {
+    System.out.println("\n");
     System.out.print("Enter Message ID to search for: ");
     String searchedMessageID = scanner.nextLine();
     
@@ -439,12 +452,12 @@ public static void searchMessageID(Scanner scanner)
             {
                 if (line.startsWith("Recipient:")) 
                 {
-                    recipient = line.substring(10).trim();
+                    recipient = line.substring(10);
                 } 
                 else 
                     if (line.startsWith("Message:")) 
                       {
-                        messageText = line.substring(8).trim();
+                        messageText = line.substring(8);
                       }
             }
             
@@ -459,7 +472,7 @@ public static void searchMessageID(Scanner scanner)
     {
         System.out.println("Message ID '" + searchedMessageID + "' not found.");
     }
-    System.out.println("");
+    System.out.println(" ");
 }
 public static void searchUsingRecipientsNumber(Scanner scanner)
 {
@@ -517,11 +530,101 @@ public static void searchUsingRecipientsNumber(Scanner scanner)
     if (!found)
     {
         System.out.println("No messages found for recipient: " + searchRecipient);
+        System.out.println(" ");
     }
     else
     {
-        System.out.println("\nTotal messages found for " + searchRecipient + ": " + count);
+        //System.out.println("\n");
+        System.out.println("Total messages found for " + searchRecipient + ": " + count);
+        System.out.println(" ");
+    }
+    System.out.println(" ");
+}
+public static void deleteAMessageUsingHash(Scanner scanner)
+{
+    String allMessages = Message.printMessages();
+    
+    if (allMessages.equals("No messages sent yet."))
+    {
+        System.out.println("No messages to delete.");
+        return;
+    }
+    String[] individualMessages = allMessages.split("\n\n");
+    
+    for (int i = 0; i < individualMessages.length; i++)
+    {
+        String msg = individualMessages[i];
+        String[] lines = msg.split("\n");
+        for (int j = 0; j < lines.length; j++)
+        {
+            if (lines[j].startsWith("Message Hash:"))
+            {
+                String hash = lines[j].substring(13).trim();
+                System.out.println((i + 1) + ". " + hash);
+                break;
+            }
+        }
+    }
+    
+    System.out.println("\n");
+    System.out.println("Enter the Message Hash you want to delete: ");
+    String deleteMessageID = scanner.nextLine();
+    
+    boolean found = false;
+    int deleteIndexPossition = -1;
+    
+    for (int i = 0; i < individualMessages.length; i++)
+    {
+        String msg = individualMessages[i];
+        if (msg.contains("Message Hash: " + deleteMessageID) || msg.contains(deleteMessageID))
+        {
+            found = true;
+            deleteIndexPossition = i;
+            break;
+        }
+    }
+    
+    if (!found)
+    {
+        System.out.println("Message with hash '" + deleteMessageID + "' not found.");
+        return;
     }
 }
- 
+public static void displayReportForMessages()
+{
+    String allMessages = Message.printMessages();
+    
+    if (allMessages.equals("No messages sent yet."))
+    {
+        System.out.println("No messages to display.");
+        return;
+    }
+    
+    String[] individualMessages = allMessages.split("\n\n");
+    
+    System.out.println("Total messages stored: " + individualMessages.length);
+    System.out.println("\n");
+    
+    for (int i = 0; i < individualMessages.length; i++)
+    {
+        System.out.println(" MESSAGE " + (i + 1) + "  :");
+        System.out.println(individualMessages[i]);
+        System.out.println();
+    }
+}
+public static void displayLastMessage()
+{
+    System.out.println("\n");
+    
+    String recent = Message.getLastMessage();
+    
+    if (recent.equals("No messages have been created yet."))
+    {
+        System.out.println(recent);
+    }
+    else
+    {
+        System.out.println(recent);
+    }
+}
 }

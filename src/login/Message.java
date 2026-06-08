@@ -21,6 +21,8 @@ public class Message {
     static String[] savedMessages = new String[50];
     static int numberOfMessages = 0;
     
+    static String lastMessage = "";
+    
     // Method that creats the message id
     public Message(int count, String receiver, String text) {
         // Generate random messageID which is 10 digits
@@ -40,6 +42,7 @@ public class Message {
         
         signHash = firstTwo + ":" + messageCounter + ":" + firstWord + lastWord;
         signHash = signHash.toUpperCase();
+        lastMessage = getMessageDetails();
     }
     
     // This is method it is used to check the message id's length
@@ -158,4 +161,12 @@ public class Message {
     {
        return messageID;
     }
+    public static String getLastMessage()
+{
+    if (lastMessage.equals(""))
+    {
+        return "No messages have been created yet.";
+    }
+    return lastMessage;
+}
 }

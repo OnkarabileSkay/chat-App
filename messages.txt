@@ -23,3 +23,13 @@ Message Hash: 97:3:ITTIME??
 Recipient: +9081234
 Message: It is dinner time??
 
+Message ID: 321370836
+Message Hash: 32:3:UWAARATA
+Recipient: +12345
+Message: Uwaa nna azanka kao rata 
+
+Message ID: 696665461
+Message Hash: 69:4:ONFANN
+Recipient: +9999
+Message: O bolela okarr nna sale kao rata nfann 
+
