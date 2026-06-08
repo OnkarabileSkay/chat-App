@@ -511,11 +511,11 @@ public static void searchUsingRecipientsNumber(Scanner scanner)
             {
                 if (lines[j].startsWith("Message ID:"))
                 {
-                    messageID = lines[j].substring(11).trim();
+                    messageID = lines[j].substring(11);
                 }
                 else if (lines[j].startsWith("Message:"))
                 {
-                    messageText = lines[j].substring(8).trim();
+                    messageText = lines[j].substring(8);
                 }
             }
             
@@ -559,7 +559,7 @@ public static void deleteAMessageUsingHash(Scanner scanner)
         {
             if (lines[j].startsWith("Message Hash:"))
             {
-                String hash = lines[j].substring(13).trim();
+                String hash = lines[j].substring(13);
                 System.out.println((i + 1) + ". " + hash);
                 break;
             }
