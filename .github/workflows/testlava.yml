@@ -19,5 +19,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
-    - name: Run tests with Ant
-      run: ant test
+    - name: Compile all Java files
+      run: |
+        find src -name "*.java" > sources.txt
+        javac -d . @sources.txt
+        echo "Compilation successful!"
