@@ -19,8 +19,5 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
-    - name: Compile project
-      run: javac -cp "lib/*" -d build src/login/*.java
-    
-    - name: Run unit tests
-      run: java -cp "build:lib/*" org.junit.runner.JUnitCore login.PoePart3Test
+    - name: Run tests with Ant
+      run: ant test
