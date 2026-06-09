@@ -7,12 +7,12 @@ public class PoePart3Test
 {
     //Tests if arrays are populated correctly
     @Test
-    public void testArraysArePopulated() 
+    public void testArraysIfPopulated() 
     {
         Message msg = new Message(1, "+27721234567", "Test message");
         msg.sendMessageForTest();
-        String result = Message.printMessages();
-        assertNotNull(result);
+        int total = Message.returnTotalMessages();
+        assertTrue(total > 0);
     }
     
     //Tests if longest message can be displayed
@@ -49,7 +49,7 @@ public class PoePart3Test
     
     //Tests if JSON file is created
     @Test
-    public void testReadJSONFile() 
+    public void testJSONFile() 
     {
         Message msg = new Message(1, "+27721234567", "Save to JSON");
         msg.storeMessageForTest();
