@@ -169,4 +169,28 @@ public class Message {
     }
     return lastMessage;
 }
+    // For testing - sends message without asking user input
+public String sendMessageForTest() {
+    sentMessage = sentMessage + 1;
+    savedMessages[numberOfMessages] = getMessageDetails();
+    numberOfMessages = numberOfMessages + 1;
+    lastMessage = getMessageDetails();
+    return "Message sent successfully!";
+}
+
+// For testing - stores message without asking the user to input
+public void storeMessageForTest() {
+    try {
+        java.io.FileWriter writer = new java.io.FileWriter("messages.json", true);
+        writer.write("{\n");
+        writer.write("  \"Message ID\": \"" + messageID + "\",\n");
+        writer.write("  \"Message Hash\": \"" + signHash + "\",\n");
+        writer.write("  \"Recipient\": \"" + recipient + "\",\n");
+        writer.write("  \"Message\": \"" + textMessage + "\"\n");
+        writer.write("},\n");
+        writer.close();
+    } catch (Exception error) {
+        // Silent fail for testing
+    }
+}
 }
