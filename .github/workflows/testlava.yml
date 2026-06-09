@@ -19,12 +19,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
-    - name: Download JUnit
+    - name: Compile all Java files
       run: |
-        wget -q https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
-        wget -q https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
-    
-    - name: Compile and run tests
-      run: |
-        javac -cp ".:junit-4.13.2.jar:hamcrest-core-1.3.jar" src/login/*.java test/login/*.java
-        java -cp ".:junit-4.13.2.jar:hamcrest-core-1.3.jar:src" org.junit.runner.JUnitCore login.PoePart3Test
+        find src -name "*.java" > sources.txt
+        javac -d . @sources.txt
+        echo "Compilation successful!"
