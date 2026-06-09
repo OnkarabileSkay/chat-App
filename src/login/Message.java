@@ -101,7 +101,7 @@ public class Message {
             return "No messages sent yet.";
         }
         
-        String allMessages = "\n ALL SENT MESSAGES\n";
+        String allMessages = "\n";
         for (int i = 0; i < numberOfMessages; i++) {
             allMessages = allMessages + savedMessages[i] + "\n";
             allMessages = allMessages + "\n";
@@ -117,14 +117,15 @@ public class Message {
     // Mathod that stores all the messages
     public void storeMessage() {
         try {
-            java.io.FileWriter writer = new java.io.FileWriter("messages.txt", true);
-            writer.write("Message ID: " + messageID + "\n");
-            writer.write("Message Hash: " + signHash + "\n");
-            writer.write("Recipient: " + recipient + "\n");
-            writer.write("Message: " + textMessage + "\n");
-            writer.write("\n");
+            java.io.FileWriter writer = new java.io.FileWriter("messages.json", true);
+            writer.write("{\n");
+            writer.write("  \"Message ID\": \"" + messageID + "\",\n");
+            writer.write("  \"Message Hash\": \"" + signHash + "\",\n");
+            writer.write("  \"Recipient\": \"" + recipient + "\",\n");
+            writer.write("  \"Message\": \"" + textMessage + "\"\n");
+            writer.write("},\n");
             writer.close();
-            System.out.println("Message stored in file!");
+            System.out.println("Message stored in JSON file!");
         } catch (Exception error) {
             System.out.println("Could not save message.");
         }
@@ -179,18 +180,19 @@ public String sendMessageForTest() {
 }
 
 // For testing - stores message without asking the user to input
-public void storeMessageForTest() {
-    try {
-        java.io.FileWriter writer = new java.io.FileWriter("messages.json", true);
-        writer.write("{\n");
-        writer.write("  \"Message ID\": \"" + messageID + "\",\n");
-        writer.write("  \"Message Hash\": \"" + signHash + "\",\n");
-        writer.write("  \"Recipient\": \"" + recipient + "\",\n");
-        writer.write("  \"Message\": \"" + textMessage + "\"\n");
-        writer.write("},\n");
-        writer.close();
-    } catch (Exception error) {
-        // Silent fail for testing
+    // For testing - stores message without asking user input (JSON format)
+    public void storeMessageForTest() {
+        try {
+            java.io.FileWriter writer = new java.io.FileWriter("messages.json", true);
+            writer.write("{\n");
+            writer.write("  \"Message ID\": \"" + messageID + "\",\n");
+            writer.write("  \"Message Hash\": \"" + signHash + "\",\n");
+            writer.write("  \"Recipient\": \"" + recipient + "\",\n");
+            writer.write("  \"Message\": \"" + textMessage + "\"\n");
+            writer.write("},\n");
+            writer.close();
+        } catch (Exception error) {
+            // Silent fail for testing
+        }
     }
-}
 }

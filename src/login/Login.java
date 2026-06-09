@@ -47,22 +47,22 @@ public class Login
 		}
 	}
              // runs the messaging app after login
-    public static void MessagingMethod(Scanner scanner)
-    {
-        System.out.println("");
-        System.out.println("Welcome to QuickChat");
-        System.out.println(" ");
-        // Ask the user how many message they will like to send
-        System.out.print("How many messages would you like to send?: ");
-        int maxMessages = scanner.nextInt();
-        System.out.println(" ");
-        System.out.print("You will send: " + maxMessages + " Messages Only. ");
-        System.out.println(" ");
-        int messageSent = 0;
-        boolean loopControl = true;
+        public static void MessagingMethod(Scanner scanner)
+        {
+           System.out.println("");
+           System.out.println("Welcome to QuickChat");
+           System.out.println(" ");
+           // Ask the user how many message they will like to send
+           System.out.print("How many messages would you like to send?: ");
+           int maxMessages = scanner.nextInt();
+           System.out.println(" ");
+           System.out.print("You will send: " + maxMessages + " Messages Only. ");
+           System.out.println(" ");
+           int messageSent = 0;
+           boolean loopControl = true;
         
-        // This while loop will keep on runing until ke loopControl become false 
-        while (loopControl == true)
+           // This while loop will keep on runing until ke loopControl become false 
+           while (loopControl == true)
         {
             System.out.println(" ");
             System.out.println("  QuickChat Menu  ");
@@ -116,25 +116,24 @@ public class Login
         }
     }
     
-    // This sends one message
-    public static void sendMessage(Scanner scanner, int messageNumber)
-    {
-        System.out.println("\n Sending Message Number " + messageNumber + " .");
-        scanner.nextLine();
-        // Get recipient cell number
-        String recipient = "";
-        boolean correctRecipientNumber = false;
-        
-        while (correctRecipientNumber == false)
+         // This sends one message
+        public static void sendMessage(Scanner scanner, int messageNumber)
         {
-            System.out.print("Enter recipient's cell number: ");
-             recipient  = scanner.nextLine();
-            
-            if (Message.checkRecipientCell(recipient).equals("correctFormate"))
+            System.out.println("\n Sending Message Number " + messageNumber + " .");
+            scanner.nextLine();
+            // Get recipient cell number
+            String recipient = "";
+            boolean correctRecipientNumber = false;
+        
+            while (correctRecipientNumber == false)
             {
+                System.out.print("Enter recipient's cell number: ");
+                recipient  = scanner.nextLine();
+            if (Message.checkRecipientCell(recipient).equals("correctFormate"))
+             {
                 System.out.println("Cell number successfully captured!");
                 correctRecipientNumber = true;
-            }
+             }
             else
             {
                 System.out.println("Cell number is incorrectly formated or does not contain an international code. Please correct the number and try again,");
@@ -296,12 +295,13 @@ public class Login
 
 
 	}
-public static void storedMessagesOption4(Scanner scanner)
-{
-    boolean option4Choices = true;
+        
+        public static void storedMessagesOption4(Scanner scanner)
+        {
+            boolean option4Choices = true;
     
-    while (option4Choices)
-    {
+            while (option4Choices)
+        {
         System.out.println(" ");
         System.out.println("Option 4 features:");
         System.out.println("1. Display sender and recipient of all stored messages");
@@ -351,38 +351,39 @@ public static void storedMessagesOption4(Scanner scanner)
                 option4Choices = false;
               }
        
-    }
-}
-public static void longestMessage()
-{
-    System.out.println(" ");
-    String allMessages = Message.printMessages();
-    
-    if (allMessages.equals("No messages sent yet."))
-    {
-        System.out.println("No messages was sent.");
-        return;
-    }
-    
-    String[] individualMessages = allMessages.split("\n\n");
-    String longestMessage = "";
-    int longestLength = 0;
-    
-    for (int i = 0; i < individualMessages.length; i++)
-    {
-        if (individualMessages[i].length() > longestLength)
+          }
+       }
+        //mETHOD THAT DISPLAYS THE LONGEST MESSAGE
+        public static void longestMessage()
         {
-            longestLength = individualMessages[i].length();
-            longestMessage = individualMessages[i];
-        }
-    }
+            System.out.println(" ");
+            String allMessages = Message.printMessages();
     
+        if (allMessages.equals("No messages sent yet."))
+        {
+           System.out.println("No messages was sent.");
+           return;
+        }
+           String[] individualMessages = allMessages.split("\n\n");
+           String longestMessage = "";
+           int longestLength = 0;
+           //LOOP THAT CHECKS FOR THE HIGHEST MESSAGE IN LENGTH  
+           for (int i = 0; i < individualMessages.length; i++)
+          {
+            //IT CHECKS ALL THE MESSAGES'S LENGTH IN THE ARRAY
+            if (individualMessages[i].length() > longestLength)
+             {
+               longestLength = individualMessages[i].length();
+               longestMessage = individualMessages[i];
+             }
+          }
     System.out.println("Longest message:" + longestLength + " characters");
     System.out.println(longestMessage);
     System.out.println("");
-}
-public static void displayAllMessages()
-{
+       }
+    
+    public static void displayAllMessages()
+    {
     System.out.println("");
     System.out.println("Sender               :  Recipient");
     String allMessages = Message.printMessages();
@@ -392,50 +393,43 @@ public static void displayAllMessages()
         System.out.println("No messages to display.");
         return;
     }
-    
     String[] individualMessages = allMessages.split("\n\n");
-    
     for (int i = 0; i < individualMessages.length; i++)
     {
         String msg = individualMessages[i];
         String recipient = "";
         String sender = "You" + "( " + cellNumber + " )";
-        
+        //IT COMBINES THE MESSAGE INTO ONE ELEMENT IN AN ARRAY 
         String[] lines = msg.split("\n");
-        for (int j = 0; j < lines.length; j++)
+        for (int indext = 0; indext< lines.length; indext++)
         {
-            if (lines[j].startsWith("Recipient:"))
+            if (lines[indext].startsWith("Recipient:"))
             {
-                recipient = lines[j].substring(10);
+                //SUB CUTS OUT THE FIRST 10 INDEX
+                recipient = lines[indext].substring(10);
                 break;
             }
         }
-        
         System.out.println(sender + "  :  " + recipient);
     }
-    
     System.out.println("Total: " + Message.returnTotalMessages() + " messages");
     System.out.println("");
-    
 }
-
-public static void searchMessageID(Scanner scanner)
-{
-    System.out.println("\n");
-    System.out.print("Enter Message ID to search for: ");
-    String searchedMessageID = scanner.nextLine();
+    public static void searchMessageID(Scanner scanner)
+    {
+       System.out.println("\n");
+       System.out.print("Enter Message ID to search for: ");
+       String searchedMessageID = scanner.nextLine();
     
-    String allMessages = Message.printMessages();
+       String allMessages = Message.printMessages();
     
     if (allMessages.equals("No messages sent yet."))
     {
         System.out.println("No messages to search.");
         return;
     }
-    
     String[] individualMessages = allMessages.split("\n\n");
     boolean found = false;
-    
     for (int i = 0; i < individualMessages.length; i++)
     {
         String msg = individualMessages[i];
@@ -446,55 +440,48 @@ public static void searchMessageID(Scanner scanner)
            //If it is found, it will do the following 
             String recipient = "";
             String messageText = "";
-            String[] lines = msg.split("\n");
+            String[] sentance = msg.split("\n");
             
-            for (String line : lines) 
+            for (int loopIndex = 0; loopIndex < sentance.length; loopIndex++)
             {
-                if (line.startsWith("Recipient:")) 
+                if (sentance[loopIndex].startsWith("Recipient:")) 
                 {
-                    recipient = line.substring(10);
+                    recipient = sentance[i].substring(10);
                 } 
                 else 
-                    if (line.startsWith("Message:")) 
+                    if (sentance[loopIndex].startsWith("Message:")) 
                       {
-                        messageText = line.substring(8);
+                        messageText = sentance[loopIndex].substring(8);
                       }
             }
-            
             System.out.println("Recipient: " + recipient);
             System.out.println("Message: " + messageText);
             found = true;
             break;
         }
     }
-    
     if (!found)
     {
         System.out.println("Message ID '" + searchedMessageID + "' not found.");
     }
     System.out.println(" ");
-}
-public static void searchUsingRecipientsNumber(Scanner scanner)
-{
-    System.out.println("\n");
-    
-    System.out.print("Enter recipient's cell number to search for: ");
-    String searchRecipient = scanner.nextLine();
-    
-    String allMessages = Message.printMessages();
-    
+   }
+    //METHOD THAT SEARCHES THE RECEIVERS CELL NUMBER 
+    public static void searchUsingRecipientsNumber(Scanner scanner)
+    {
+       System.out.println("\n");
+       System.out.print("Enter recipient's cell number to search for: ");
+       String searchRecipient = scanner.nextLine();
+       String allMessages = Message.printMessages();
     if (allMessages.equals("No messages sent yet."))
     {
         System.out.println("No messages to search.");
         return;
     }
-    
     String[] individualMessages = allMessages.split("\n\n");
     boolean found = false;
     int count = 0;
-    
     System.out.println("\n");
-    
     for (int i = 0; i < individualMessages.length; i++)
     {
         String msg = individualMessages[i];
@@ -509,7 +496,7 @@ public static void searchUsingRecipientsNumber(Scanner scanner)
             
             for (int j = 0; j < lines.length; j++)
             {
-                if (lines[j].startsWith("Message ID:"))
+                if (lines[j].startsWith("MessageI ID:"))
                 {
                     messageID = lines[j].substring(11);
                 }
@@ -526,7 +513,6 @@ public static void searchUsingRecipientsNumber(Scanner scanner)
             count++;
         }
     }
-    
     if (!found)
     {
         System.out.println("No messages found for recipient: " + searchRecipient);
@@ -534,18 +520,17 @@ public static void searchUsingRecipientsNumber(Scanner scanner)
     }
     else
     {
-        //System.out.println("\n");
         System.out.println("Total messages found for " + searchRecipient + ": " + count);
         System.out.println(" ");
     }
     System.out.println(" ");
-}
-public static void deleteAMessageUsingHash(Scanner scanner)
-{
-    String allMessages = Message.printMessages();
+    }
+    public static void deleteAMessageUsingHash(Scanner scanner)
+    {
+       String allMessages = Message.printMessages();
     
     if (allMessages.equals("No messages sent yet."))
-    {
+  {
         System.out.println("No messages to delete.");
         return;
     }
@@ -565,14 +550,12 @@ public static void deleteAMessageUsingHash(Scanner scanner)
             }
         }
     }
-    
     System.out.println("\n");
     System.out.println("Enter the Message Hash you want to delete: ");
     String deleteMessageID = scanner.nextLine();
     
     boolean found = false;
     int deleteIndexPossition = -1;
-    
     for (int i = 0; i < individualMessages.length; i++)
     {
         String msg = individualMessages[i];
@@ -583,7 +566,6 @@ public static void deleteAMessageUsingHash(Scanner scanner)
             break;
         }
     }
-    
     if (!found)
     {
         System.out.println("Message with hash '" + deleteMessageID + "' not found.");
@@ -599,12 +581,9 @@ public static void displayReportForMessages()
         System.out.println("No messages to display.");
         return;
     }
-    
     String[] individualMessages = allMessages.split("\n\n");
-    
     System.out.println("Total messages stored: " + individualMessages.length);
     System.out.println("\n");
-    
     for (int i = 0; i < individualMessages.length; i++)
     {
         System.out.println(" MESSAGE " + (i + 1) + "  :");

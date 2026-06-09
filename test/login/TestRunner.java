@@ -43,10 +43,10 @@ public class TestRunner {
                 }
                 
                 if (testPassed) {
-                    System.out.println("✓ " + testName + ": PASSED");
+                    System.out.println(" " + testName + ": PASSED");
                     passed++;
                 } else {
-                    System.out.println("✗ " + testName + ": FAILED");
+                    System.out.println(" " + testName + ": FAILED");
                     System.out.println("  Error: " + errorMessage);
                     failed++;
                 }
@@ -56,18 +56,10 @@ public class TestRunner {
         System.out.println("\n");
         System.out.println("Details:");
         System.out.println("  Total Tests: " + (passed + failed));
-        System.out.println("  Passed: " + passed + " ✓");
-        System.out.println("  Failed: " + failed + " ✗");
+        System.out.println("  Passed: " + passed + " .");
+        System.out.println("  Failed: " + failed + " .");
         System.out.println("  Time: " + result.getRunTime() + "ms");
         System.out.println("\n");
-        
-        if (result.wasSuccessful()) {
-            System.out.println("          ALL TESTS PASSED! ");
-        } else {
-            System.out.println("          SOME TESTS FAILED! ");
-        }
-        System.out.println("\n");
-        
         // Exit with error code if any test failed
         System.exit(result.wasSuccessful() ? 0 : 1);
     }
