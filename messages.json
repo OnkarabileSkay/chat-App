@@ -70,3 +70,15 @@
   "Recipient": "+27838884567",
   "Message": "Where are you? You are late! I have asked you to be on time."
 },
+{
+  "Message ID": "339672994",
+  "Message Hash": "33:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "433946485",
+  "Message Hash": "43:5:OK,YOU.",
+  "Recipient": "+27838884567",
+  "Message": "Ok, I am leaving without you."
+},

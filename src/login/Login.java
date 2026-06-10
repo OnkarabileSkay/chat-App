@@ -497,7 +497,7 @@ public class Login
             
             for (int j = 0; j < lines.length; j++)
             {
-                if (lines[j].startsWith("MessageI ID:"))
+                if (lines[j].startsWith("Message ID:"))
                 {
                     messageID = lines[j].substring(11);
                 }
