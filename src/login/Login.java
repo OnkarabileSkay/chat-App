@@ -447,7 +447,7 @@ public class Login
             {
                 if (sentance[loopIndex].startsWith("Recipient:")) 
                 {
-                    recipient = sentance[i].substring(10);
+                    recipient = sentance[loopIndex].substring(10);
                 } 
                 else 
                     if (sentance[loopIndex].startsWith("Message:")) 
@@ -526,12 +526,12 @@ public class Login
     }
     System.out.println(" ");
     }
-    public static void deleteAMessageUsingHash(Scanner scanner)
-    {
-       String allMessages = Message.printMessages();
+public static void deleteAMessageUsingHash(Scanner scanner)
+{
+    String allMessages = Message.printMessages();
     
     if (allMessages.equals("No messages sent yet."))
-  {
+    {
         System.out.println("No messages to delete.");
         return;
     }
@@ -567,6 +567,23 @@ public class Login
             break;
         }
     }
+    
+    if (found)
+    {
+        String deletedMsg = individualMessages[deleteIndexPossition];
+        String[] lines = deletedMsg.split("\n");
+        String messageText = "";
+        for (int x = 0; x < lines.length; x++)
+        {
+            if (lines[x].startsWith("Message:"))
+            {
+                messageText = lines[x].substring(8);
+                break;
+            }
+        }
+        System.out.println("Message: \"" + messageText + "\" successfully deleted.");
+    }
+    
     if (!found)
     {
         System.out.println("Message with hash '" + deleteMessageID + "' not found.");

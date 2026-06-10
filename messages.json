@@ -82,3 +82,105 @@
   "Recipient": "+27838884567",
   "Message": "Ok, I am leaving without you."
 },
+{
+  "Message ID": "234613318",
+  "Message Hash": "23:1:SAVEJSON",
+  "Recipient": "+27721234567",
+  "Message": "Save to JSON"
+},
+{
+  "Message ID": "414799814",
+  "Message Hash": "41:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "356389471",
+  "Message Hash": "35:5:OK,YOU.",
+  "Recipient": "+27838884567",
+  "Message": "Ok, I am leaving without you."
+},
+{
+  "Message ID": "419528135",
+  "Message Hash": "41:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "870858618",
+  "Message Hash": "87:5:OK,YOU.",
+  "Recipient": "+27838884567",
+  "Message": "Ok, I am leaving without you."
+},
+{
+  "Message ID": "217386444",
+  "Message Hash": "21:3:YOHOOOO,GATE.",
+  "Recipient": "+3456",
+  "Message": "Yohoooo, I am at the gate."
+},
+{
+  "Message ID": "937854395",
+  "Message Hash": "93:4:OK,YOU.",
+  "Recipient": "+9999",
+  "Message": "Ok, I am leaving without you."
+},
+{
+  "Message ID": "176498191",
+  "Message Hash": "17:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "417567545",
+  "Message Hash": "41:5:OK,YOU.",
+  "Recipient": "+27838884567",
+  "Message": "Ok, I am leaving without you."
+},
+{
+  "Message ID": "121404151",
+  "Message Hash": "12:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "15464266",
+  "Message Hash": "15:5:OK,YOU.",
+  "Recipient": "+27838884567",
+  "Message": "Ok, I am leaving without you."
+},
+{
+  "Message ID": "258178550",
+  "Message Hash": "25:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "858708701",
+  "Message Hash": "85:5:OK,YOU.",
+  "Recipient": "+27838884567",
+  "Message": "Ok, I am leaving without you."
+},
+{
+  "Message ID": "385883076",
+  "Message Hash": "38:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "519127493",
+  "Message Hash": "51:2:WHERETIME.",
+  "Recipient": "+27838884567",
+  "Message": "Where are you? You are late! I have asked you to be on time."
+},
+{
+  "Message ID": "219330393",
+  "Message Hash": "21:5:OK,YOU.",
+  "Recipient": "+27838884567",
+  "Message": "Ok, I am leaving without you."
+},
+{
+  "Message ID": "735071899",
+  "Message Hash": "73:3:PDHXDBGUSJIK",
+  "Recipient": "+999",
+  "Message": "Pdhxdbg usxdi usjik"
+},
