@@ -353,6 +353,7 @@ public class Login
        
           }
        }
+    //METHOD THAT DISPLAY THE MESSAGES     
     public static void displayAllMessages()
     {
        System.out.println("");
@@ -370,7 +371,7 @@ public class Login
             String msg = individualMessages[i];
             String recipient = "";
             String sender = "You" + "( " + cellNumber + " )";
-            //IT COMBINES THE MESSAGE INTO ONE ELEMENT IN AN ARRAY 
+            //IT COMBINES THE MESSAGE INTO DIFFERENT ELEMENTS IN AN ARRAY 
             String[] lines = msg.split("\n");
               for (int indext = 0; indext< lines.length; indext++)
               {
@@ -386,7 +387,7 @@ public class Login
         System.out.println("Total: " + Message.returnTotalMessages() + " messages");
         System.out.println("");
         }        
-        //mETHOD THAT DISPLAYS THE LONGEST MESSAGE
+        //METHOD THAT DISPLAYS THE LONGEST MESSAGE
         public static void longestMessage()
         {
             System.out.println(" ");
@@ -589,21 +590,6 @@ public static void displayReportForMessages()
         System.out.println(" MESSAGE " + (i + 1) + "  :");
         System.out.println(individualMessages[i]);
         System.out.println("");
-    }
-}
-public static void displayLastMessage()
-{
-    System.out.println("\n");
-    
-    String recent = Message.getLastMessage();
-    
-    if (recent.equals("No messages have been created yet."))
-    {
-        System.out.println(recent);
-    }
-    else
-    {
-        System.out.println(recent);
     }
 }
 }
