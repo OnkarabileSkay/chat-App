@@ -23,6 +23,22 @@ public class Message {
     
     static String lastMessage = "";
     
+    //Array for all messages sent
+    static String[] sentMessages = new String[50];      
+    static int sentMessagesCount = 0;
+    //Array for all messages deleted 
+    static String[] deletedMessages = new String[50]; 
+    static int deletedMessagesCounter = 0;
+    //Array for all messages in JSON file
+    static int savedMessagesCounter = 0;
+    static String[] storedMessages = new String[50];
+    //Array for all message hashes
+    static String[] messageHash = new String[50];       
+    static int messageHashCount = 0;
+    //Array for all message ID
+    static String[] messageIDArray = new String[50];          
+    static int messageIDCount = 0;
+    
     // Method that creats the message id
     public Message(int count, String receiver, String text) {
         // Generate random messageID which is 10 digits
@@ -84,11 +100,20 @@ public class Message {
             sentMessage = sentMessage + 1;
             savedMessages[numberOfMessages] = getMessageDetails();
             numberOfMessages = numberOfMessages + 1;
+            // Array for SENT message
+            sentMessages[sentMessagesCount] = getMessageDetails();
+            sentMessagesCount++;
+            messageHash[messageHashCount] = signHash;
+            messageHashCount++;
+            messageIDArray[messageIDCount] = messageID;
+            messageIDCount++;
             return "Message sent successfully!";
         } else if (choice == 2) {
             storeMessage();
             return "Message stored successfully!";
         } else if (choice == 0) {
+            deletedMessages[deletedMessagesCounter] = getMessageDetails();
+            deletedMessagesCounter++;
             return "Message disregarded and deleted!";
         } else {
             return "Not available option, please choose between (1 , 2, and 0)";
@@ -170,17 +195,23 @@ public class Message {
     }
     return lastMessage;
 }
-    // For testing - sends message without asking user input
-public String sendMessageForTest() {
+    // For unit testing to send a message without asking user's input
+    public String sendMessageForTest() {
     sentMessage = sentMessage + 1;
     savedMessages[numberOfMessages] = getMessageDetails();
     numberOfMessages = numberOfMessages + 1;
     lastMessage = getMessageDetails();
+    // Populate Part 3 arrays for SENT message (test)
+    sentMessages[sentMessagesCount] = getMessageDetails();
+    sentMessagesCount++;
+    messageHash[messageHashCount] = signHash;
+    messageHashCount++;
+    messageIDArray[messageIDCount] = messageID;
+    messageIDCount++;
     return "Message sent successfully!";
 }
 
-// For testing - stores message without asking the user to input
-    // For testing - stores message without asking user input (JSON format)
+    // For testing stored message without asking the user to input
     public void storeMessageForTest() {
         try {
             java.io.FileWriter writer = new java.io.FileWriter("messages.json", true);
@@ -192,7 +223,6 @@ public String sendMessageForTest() {
             writer.write("},\n");
             writer.close();
         } catch (Exception error) {
-            // Silent fail for testing
         }
     }
 }

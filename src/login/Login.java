@@ -68,7 +68,7 @@ public class Login
             System.out.println("  QuickChat Menu  ");
             System.out.println("Option 1: Send Messages:");
             System.out.println("Option 2: Show recently sent messages:");
-            System.out.println("Option 4: Stored Messages:");
+            System.out.println("Option 3: Stored Messages:");
             System.out.println("Option 0: Quit:");
             System.out.print("Choose an option: ");
              
@@ -105,7 +105,7 @@ public class Login
                 System.out.println("Thank you for using QuickChat. Goodbye!");
                 loopControl = false; 
             }
-            else if (Userchoice==4)
+            else if (Userchoice==3)
             {
                 storedMessagesOption4(scanner);
             }
@@ -295,7 +295,7 @@ public class Login
 
 
 	}
-        
+        //Method for option 4 
         public static void storedMessagesOption4(Scanner scanner)
         {
             boolean option4Choices = true;
@@ -304,7 +304,7 @@ public class Login
         {
         System.out.println(" ");
         System.out.println("Option 4 features:");
-        System.out.println("1. Display sender and recipient of all stored messages");
+        System.out.println("1. Display sender and recipient cell number of all stored messages");
         System.out.println("2. Display the longest stored message");
         System.out.println("3. Search for a message ID");
         System.out.println("4. Search for all messages for a particular recipient");
@@ -441,7 +441,7 @@ public class Login
             String recipient = "";
             String messageText = "";
             String[] sentance = msg.split("\n");
-            
+            //LOOP THAT COPIES THE USERS RECIPIENT NUMBER AND MESSAGE
             for (int loopIndex = 0; loopIndex < sentance.length; loopIndex++)
             {
                 if (sentance[loopIndex].startsWith("Recipient:")) 
@@ -475,7 +475,7 @@ public class Login
        String allMessages = Message.printMessages();
     if (allMessages.equals("No messages sent yet."))
     {
-        System.out.println("No messages to search.");
+        System.out.println("No messages to search for.");
         return;
     }
     String[] individualMessages = allMessages.split("\n\n");
@@ -588,7 +588,7 @@ public static void displayReportForMessages()
     {
         System.out.println(" MESSAGE " + (i + 1) + "  :");
         System.out.println(individualMessages[i]);
-        System.out.println();
+        System.out.println("");
     }
 }
 public static void displayLastMessage()
