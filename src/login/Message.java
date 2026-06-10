@@ -34,10 +34,10 @@ public class Message {
     static String[] storedMessages = new String[50];
     //Array for all message hashes
     static String[] messageHash = new String[50];       
-    static int messageHashCount = 0;
+    static int messageHashCounter = 0;
     //Array for all message ID
-    static String[] messageIDArray = new String[50];          
-    static int messageIDCount = 0;
+    static String[] messageIdArray = new String[50];          
+    static int messageIdCounter = 0;
     
     // Method that creats the message id
     public Message(int count, String receiver, String text) {
@@ -58,6 +58,7 @@ public class Message {
         
         signHash = firstTwo + ":" + messageCounter + ":" + firstWord + lastWord;
         signHash = signHash.toUpperCase();
+        //LAST MESSAGE IN THIS VARIABLE
         lastMessage = getMessageDetails();
     }
     
@@ -103,10 +104,10 @@ public class Message {
             // Array for SENT message
             sentMessages[sentMessagesCount] = getMessageDetails();
             sentMessagesCount++;
-            messageHash[messageHashCount] = signHash;
-            messageHashCount++;
-            messageIDArray[messageIDCount] = messageID;
-            messageIDCount++;
+            messageHash[messageHashCounter] = signHash;
+            messageHashCounter++;
+            messageIdArray[messageIdCounter] = messageID;
+            messageIdCounter++;
             return "Message sent successfully!";
         } else if (choice == 2) {
             storeMessage();
@@ -117,7 +118,7 @@ public class Message {
             return "Message disregarded and deleted!";
         } else {
             return "Not available option, please choose between (1 , 2, and 0)";
-        }
+        }                         
     }
     
     // This method is used to svae all messages
@@ -187,6 +188,7 @@ public class Message {
     {
        return messageID;
     }
+    //Method that collect the last message
     public static String getLastMessage()
 {
     if (lastMessage.equals(""))
@@ -201,13 +203,13 @@ public class Message {
     savedMessages[numberOfMessages] = getMessageDetails();
     numberOfMessages = numberOfMessages + 1;
     lastMessage = getMessageDetails();
-    // Populate Part 3 arrays for SENT message (test)
+    // arrays for SENT message (test)
     sentMessages[sentMessagesCount] = getMessageDetails();
     sentMessagesCount++;
-    messageHash[messageHashCount] = signHash;
-    messageHashCount++;
-    messageIDArray[messageIDCount] = messageID;
-    messageIDCount++;
+    messageHash[messageHashCounter] = signHash;
+    messageHashCounter++;
+    messageIdArray[messageIdCounter] = messageID;
+    messageIdCounter++;
     return "Message sent successfully!";
 }
 
