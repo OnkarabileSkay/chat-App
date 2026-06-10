@@ -98,7 +98,7 @@ public class Login
             }
             else if (Userchoice == 2)
             {
-                displayLastMessage();
+                System.out.println(" Coming Soon:");
             }
             else if (Userchoice == 0)
             {
@@ -353,6 +353,39 @@ public class Login
        
           }
        }
+    public static void displayAllMessages()
+    {
+       System.out.println("");
+       System.out.println("Sender               :  Recipient");
+       String allMessages = Message.printMessages();
+    
+     if (allMessages.equals("No messages sent yet."))
+      {
+          System.out.println("No messages to display.");
+          return;
+       }
+        String[] individualMessages = allMessages.split("\n\n");
+          for (int i = 0; i < individualMessages.length; i++)
+          {
+            String msg = individualMessages[i];
+            String recipient = "";
+            String sender = "You" + "( " + cellNumber + " )";
+            //IT COMBINES THE MESSAGE INTO ONE ELEMENT IN AN ARRAY 
+            String[] lines = msg.split("\n");
+              for (int indext = 0; indext< lines.length; indext++)
+              {
+                 if (lines[indext].startsWith("Recipient:"))
+                  {
+                    //SUB CUTS OUT THE FIRST 10 INDEX
+                    recipient = lines[indext].substring(10);
+                    break;
+                  }
+              }
+             System.out.println(sender + "  :  " + recipient);
+           }
+        System.out.println("Total: " + Message.returnTotalMessages() + " messages");
+        System.out.println("");
+        }        
         //mETHOD THAT DISPLAYS THE LONGEST MESSAGE
         public static void longestMessage()
         {
@@ -382,39 +415,6 @@ public class Login
     System.out.println("");
        }
     
-    public static void displayAllMessages()
-    {
-    System.out.println("");
-    System.out.println("Sender               :  Recipient");
-    String allMessages = Message.printMessages();
-    
-    if (allMessages.equals("No messages sent yet."))
-    {
-        System.out.println("No messages to display.");
-        return;
-    }
-    String[] individualMessages = allMessages.split("\n\n");
-    for (int i = 0; i < individualMessages.length; i++)
-    {
-        String msg = individualMessages[i];
-        String recipient = "";
-        String sender = "You" + "( " + cellNumber + " )";
-        //IT COMBINES THE MESSAGE INTO ONE ELEMENT IN AN ARRAY 
-        String[] lines = msg.split("\n");
-        for (int indext = 0; indext< lines.length; indext++)
-        {
-            if (lines[indext].startsWith("Recipient:"))
-            {
-                //SUB CUTS OUT THE FIRST 10 INDEX
-                recipient = lines[indext].substring(10);
-                break;
-            }
-        }
-        System.out.println(sender + "  :  " + recipient);
-    }
-    System.out.println("Total: " + Message.returnTotalMessages() + " messages");
-    System.out.println("");
-}
     public static void searchMessageID(Scanner scanner)
     {
        System.out.println("\n");
