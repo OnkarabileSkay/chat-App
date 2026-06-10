@@ -86,16 +86,19 @@ public class Message {
     }
     
     // Method that displays the users choice to choose from
-    public String sendMessage() {
-        java.util.Scanner input = new java.util.Scanner(System.in);
-        
+public String sendMessage() {
+    java.util.Scanner input = new java.util.Scanner(System.in);
+    
+    int choice = -1;
+    
+    while (choice != 1 && choice != 2 && choice != 0) {
         System.out.println("\nWhat do you want to do with this message?");
         System.out.println("Enter 1 to SEND it");
         System.out.println("Enter 2 to STORE it");
         System.out.println("Enter 0 to DELETE it");
         System.out.print("Your choice: ");
         
-        int choice = input.nextInt();
+        choice = input.nextInt();
         
         if (choice == 1) {
             sentMessage = sentMessage + 1;
@@ -115,11 +118,15 @@ public class Message {
         } else if (choice == 0) {
             deletedMessages[deletedMessagesCounter] = getMessageDetails();
             deletedMessagesCounter++;
-            return "Message disregarded and deleted!";
+            return "Message deleted!";
         } else {
-            return "Not available option, please choose between (1 , 2, and 0)";
-        }                         
+            System.out.println("Not available option, please choose between (1, 2, and 0)");
+       
+        }
     }
+    
+    return "";
+}
     
     // This method is used to svae all messages
     public static String printMessages() {
@@ -151,7 +158,6 @@ public class Message {
             writer.write("  \"Message\": \"" + textMessage + "\"\n");
             writer.write("},\n");
             writer.close();
-            System.out.println("Message stored in JSON file!");
         } catch (Exception error) {
             System.out.println("Could not save message.");
         }
