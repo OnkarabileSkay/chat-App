@@ -12,7 +12,7 @@ public class PoePart3Test
         Message msg = new Message(1, "+27721234567", "Test message");
         msg.sendMessageForTest();
         int total = Message.returnTotalMessages();
-        assertTrue(total < 0);
+        assertTrue(total > 0);
     }
     
     //Tests if longest message can be displayed
