@@ -233,4 +233,41 @@ public String sendMessage() {
         } catch (Exception error) {
         }
     }
+    public static String[] getStoredMessagesFromJSON()
+    {
+    String[] tempArray = new String[100];
+    int count = 0;
+    try {
+        java.io.FileReader reader = new java.io.FileReader("messages.json");
+        java.io.BufferedReader bufferedReader = new java.io.BufferedReader(reader);
+        String line;
+        String message = "";
+        while ((line = bufferedReader.readLine()) != null)
+        {
+            if (line.equals("},") || line.equals("}"))
+            {
+                if (!message.equals(""))
+                {
+                    tempArray[count] = message;
+                    count++;
+                    message = "";
+                }
+            }
+            else if (!line.equals("{") && !line.equals("") && !line.equals("},") && !line.equals("}"))
+            {
+                message = message + line + "\n";
+            }
+        }
+        bufferedReader.close();
+    } catch (Exception error) {
+        // File not found or empty
+    }
+    
+    String[] result = new String[count];
+    for (int i = 0; i < count; i++)
+    {
+        result[i] = tempArray[i];
+    }
+    return result;
+    }
 }
