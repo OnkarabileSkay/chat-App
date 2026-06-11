@@ -56,7 +56,7 @@ public class PoePart3Test
         assertTrue(true);
     }
     
-    //Tests if message report displays
+    //Tests if message report is displayed
     @Test
     public void testDisplayReport() 
     {
